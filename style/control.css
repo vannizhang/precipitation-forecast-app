@@ -1,0 +1,74 @@
+.control {
+    top: 92px;
+    left: 11px;
+    margin-left: 10px;
+    position: absolute;
+    z-index: 999;    
+    height: 0px; 
+}
+
+.pane {
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    z-index: 999;
+    background-color: rgba(255, 255, 255, 1);
+    /*opacity: 0.5; */
+    border-radius: 8px;
+}
+
+.pane-section {
+    /*margin-top: 10px;
+    margin-bottom: 10px;*/
+    
+    float: left;
+    z-index: 999;
+    /*margin-left: 0px;*/
+    /*margin-bottom: 10px;*/
+    /*background-color: white;*/
+    border-radius: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    opacity: 1;     
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.control-button {
+    float: left;
+}
+
+.control-command-interior {
+    /*background-image: url(../js/images/list.png);*/
+    background-size: contain;
+    background-size: 60%;
+    background-position: center;
+    width: 24px;
+    height: 24px;
+    /* background-position: 50% 50%; */
+    background-repeat: no-repeat;
+    display: block;
+    padding: 3px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    box-shadow: 0 1px 7px rgba(0, 0, 0, 0.65);
+    cursor: auto;
+    text-align: center;
+    background-color: #FFFFFF;
+    z-index: 999;
+    margin-bottom: 10px;
+    cursor: pointer;
+}  
+
+#locationInputPaneControl{
+    background-image: url(../images/xyz.png);
+}
+
+#aboutPaneControl{
+    background-image: url(../images/question.png);
+}
+
+#drawPaneControl{
+    background-image: url(../images/draw.png);
+}

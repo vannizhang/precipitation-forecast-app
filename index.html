@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+    <title>Precipitation Forecast Map</title>
+
+    <link rel="stylesheet" href="./style/chart-style.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.16/esri/css/esri.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style/calcite-web.min.css">
+    <link rel="stylesheet" href="./style/main.css">
+    <link rel="stylesheet" href="./style/control.css">
+    <link rel="stylesheet" href="./style/tooltip.css">
+
+    <script>
+        var locationPath = location.origin + location.pathname.replace(/\/[^/]+$/, '');
+        var dojoConfig = {
+            parseOnLoad: true,
+            packages: [
+                {
+                    "name": "app_modules",
+                    "location": locationPath + '/js/modules'
+                },
+                {
+                    "name": "configs",
+                    "location": locationPath + '/js/configs'
+                },                
+            ]
+        };
+    </script>  
+    
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="./js/calcite-web.min.js"></script>
+    <script src="./js/d3.v3.min.js"></script>
+    <script src="./js/underscore-min.js"></script>
+    <script src="https://js.arcgis.com/3.16/"></script>
+    <script src="./js/ui.js"></script>
+    <script src="./js/main.js"></script>
+
+</head>
+  
+<body>
+    <div class="header">
+        <div id="title">Precipitation Forecast App</div>
+        <div id="esri-logo"></div>
+        <div id="nav-icons">
+            <div id="toggle-menu-icon" class="toggle-icon"><span class="fa fa-bars fa-1x"></span></div>
+            <div id="info-icon" class="toggle-item"><span class="fa fa-info-circle fa-1x js-modal-toggle" data-modal="about-info-modal"></span></div>
+            <!--<div id="search-icon" class="nav-icon toggle-item"></div>
+            <div id="layers-icon" class="nav-icon toggle-item active"></div>-->
+        </div>
+    </div>
+    <div class="loading" id="loadingSpinner" style="display:none;">Loading&#8230;</div>
+
+    <div class="billboard hide">
+        <div class="billboard-location-info">
+            <span class="layer-main-title"></span>
+            <span class="layer-sub-title"></span>
+        </div>
+        <div class="billboard-time-info">
+            <span class="from-time-label"></span>
+            <span class="to-time-label"></span>
+        </div>
+    </div>
+    
+    <div class="panel panel-fixed-to-top panel-no-border text-white">
+        <div class="panel-items-wrapper">
+            <div id="layers-div" class="panel-item">
+                
+                <div class="query-layers">
+                    <div class="category-item query-layer left active calcite-demi" id="watershed-layer"><b>Watershed</b></div>
+                    <div class="category-item query-layer left calcite-demi" id="county-layer"><b>County</b></div>
+                    <div class="category-item calcite-demi" id="draw-layer"><b>Draw</b></div>
+                </div>
+
+                <div class="search-input-box">
+                    <div id="search"></div>
+                </div>
+
+                <div id="toggleCumulative" class="active font-size--2 leader-half trailer-half">
+                    <span class="fa fa-check-square-o"></span>
+                    <span>Toggle national precipitation view</span>
+                </div>
+
+                <div class="info-box">
+
+
+                    <div class="info-box-text font-size--3 text-gray">
+                        <span>The national level precipitation map shows the total amount of precipitation that will be accumulated within the next 72 hours.</span><br>
+                        <span>Click map to select watershed/county to explore detailed precipitation forecast data.  </span>
+                    </div>
+                    
+
+                </div>
+            </div>
+            
+        </div>    
+    </div>
+
+    
+    <div id="chartOpenIcon" class="hide">show chart</div>
+    
+    <div id="chart-container" class="hide">
+        <div id="chartCloseIcone">&#10006;</div>
+        <div class="chart-header">
+            <div class="location-info">
+                <span class="layer-main-title"></span>
+                <span class="layer-sub-title"></span>
+            </div>
+        </div>
+
+        <div class="chart-table-wrapper">
+            
+            <!--<div class="chart-table-item left col-4">
+                <div class="location-info">
+                    <span class="layer-main-title"></span>
+                    <span class="layer-sub-title"></span>
+                </div>
+
+                <div class="time-info">
+                    <div class="time-info-items-wrapper">
+                        <div class="time-info-item left"><div class="time-info-item-label">from</div><div class="time-info-item-value from-time from-time-label"></div></div><div class="time-info-item"><div class="time-info-item-label">to</div><div class="time-info-item-value to-time to-time-label"></div></div><div class="play-animation-btn right"><span class="fa fa-play fa-1x"></span></div>
+                    </div>
+                </div>
+            </div>-->
+
+            <div class="chart-table-item">
+
+                <div class="precip-info">
+                    <div class="precip-info-title">
+                        <span class="title">% of area by accumulation</span>
+                        <span class="time-info"></span>
+                    </div>
+                    <div class="precip-info-table-header"></div>
+                    <div class="precip-info-table-row"></div>
+                </div>
+
+            </div>
+
+            <div class="chart-table-divider"></div>
+        </div>
+        
+        <div class="chart-wrapper">
+            
+            <div id="chart-tablet-view-wrapper">
+                <div class="chart-tablet-view-items-wrapper accumulation"></div>
+                <div class="chart-tablet-view-items-wrapper precipitation hide"></div>
+            </div>
+
+            <div id="chart-selection-wrapper" class="">
+
+                <div class="chart-selection-item accumulation">
+                    <div class="title">
+                        <span id="AccumOfPrecip" class="selection-box fa fa-check-square-o" name="ndfd-accumulationByTime" aria-hidden="true"></span>
+                        <span class="chart-selection-item-text">Accumulation</span>
+                        <!--<span class="question-icon fa fa-question-circle fa-1x"></span>-->
+                    </div>
+                    <div class="desc">
+                        <span class="chart-selection-item-text">accumulated precipitation within 72-hours</span>
+                    </div>
+                </div>
+
+                <div class="chart-selection-item precipitation inactive">
+                    <div class="title">
+                        <span id="AmountOfPrecip" class="selection-box fa fa-square-o" name="ndfd-amountByTime" aria-hidden="true"></span>
+                        <span class="chart-selection-item-text">Precipitation</span>
+                        <!--<span class="question-icon fa fa-question-circle fa-1x"></span>-->
+                    </div>
+                    <div class="desc">
+                        <span class="chart-selection-item-text">precipitation expected for each 6 hour interval</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-row">
+                <div id="play-animation-button-wrapper" class="column">
+                    <div class="play-animation-btn"><span class="fa fa-play-circle-o fa-1x"></span></div>
+                </div>
+                <div id="chart-div" class="column"></div>
+                <div id="precip-info-table-vertical" class="column"></div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div id="mapDiv"></div>
+
+    <div class="js-modal modal-overlay modifier-class" data-modal="about-info-modal">
+        <div class="modal-content column-12" role="dialog" aria-labelledby="modal" role="dialog">
+      
+          <h3 class='trailer-half'>Precipitation Forecast App</h3>
+          <p>The <b>Precipitation Forecast Map</b> provides users an interactive way to visualize a mapped forecast of the precipitation for the next <b>72 hours</b> for any location across the Continental United States.</p> 
+          <p>The Data used by this application are updated hourly from the <a href="http://www.nws.noaa.gov/ndfd/" target="_BLANK">National Digital Forecast Database</a> (NDFD) produced by the National Weather Service.</p>  
+          <p>The <b>Precipitation Forecast Live Feeds</b> data used by this application are avialble on <a href="https://livingatlas.arcgis.com/en/#s=0&q=Precipitation%20Forecast" target="_BLANK">Living Atlas of the World</a>.</p>
+          <p>This application was designed and developed by the <a href="https://livingatlas.arcgis.com" target="_BLANK">Living Atlas team</a>.</p>  
+      
+          <div class="text-right">
+              <button class="btn btn-clear js-modal-toggle">Close</button>
+          </div>
+        </div>
+    </div>
+    
+</body>
+</html>

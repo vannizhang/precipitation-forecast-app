@@ -1,0 +1,119 @@
+svg {
+    font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 0.5px;
+}
+
+.axis text {
+    font: 10px sans-serif;
+    fill: #eee;
+}
+
+/*.y-axis-label {
+    fill: #636363;
+}*/
+
+.legend {
+    font-size: 12px;
+    /*font-weight: bold;*/
+}
+        
+.tick line{
+    opacity: 0.9;
+}   
+
+.dot {
+    /*fill: #8a96b8;*/
+    /*stroke: #ADBCE6;
+    stroke-width: .5px;*/
+}   
+
+.highlight-dot {
+    /*fill: #2274A5;
+    stroke: #2274A5;
+    stroke-width: .5px;*/
+}           
+
+.overlay {
+    fill: none;
+    pointer-events: all;
+}  
+
+div.chart-tooltip {
+    z-index: 99;
+    opacity: 0.9;
+    position: absolute;	
+    width: 300px;
+    height: 100%;
+    max-height: 300px;		
+    /*padding: 10px 20px;*/
+    font: 12px sans-serif;	
+    /*background-color: #ebebeb;	*/
+    border: 0px;					
+    border-radius: 2px;
+    display:block;
+    color: #525252;
+    /*  pointer-events: none;	This line needs to be removed */
+    
+}   
+
+div.tooltip-inner {
+    /*background: #909090;*/
+    background-color: rgba(0,0,0,.9);
+    padding: 10px;
+    border-radius: 2px;
+    color: #efefef;
+}
+
+div.chart-tooltip p {
+    /* font: 13px sans-serif;	
+    line-height: 22px;
+    margin-left: 5px;
+    margin-right: 5px; */
+}
+
+.tooltip-title {
+    text-align: center;
+    font-size: 22px;
+}
+
+span.amountByTimeLow {
+    /*color: #9ecae1;*/
+    color: #2171b5;
+}
+span.amountByTimeHigh {
+    color: #2171b5;
+}
+span.accumulationByTimeLow {
+    color: #807dba;
+}
+span.accumulationByTimeHigh {
+    color: #54278f;
+}
+
+.area {
+    opacity: 0.3;
+}   
+
+.area.active {
+    opacity: 0.9;
+}   
+
+.areaAccumOfPrecip {
+    fill: #fff;
+    /*fill: #8767b0;*/
+}
+
+.areaAmountOfPrecip {
+    /*fill: #0b7ac0;*/
+    fill: #fff;
+}   
+
+/*.period-bar{
+    fill: 
+}*/

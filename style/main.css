@@ -1,0 +1,1312 @@
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: #444;
+}
+
+#mapDiv {
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: 0;
+    padding: 0; 
+}
+
+.header {
+    height: 50px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    /* background-color: #007ac2; */
+    background-color: rgba(0,0,0,0.8);
+}
+
+#title {
+    position: absolute;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 15px;
+    color: #FFFFFF;
+    font-size: 26px;
+}
+
+#title.hide {
+    display: none;
+}
+
+#esri-logo {
+    position: absolute;
+    /*float: right;*/
+    right: 0px;
+    top: 0px;
+    /*right: 0px;*/
+    height: 50px;
+    width: 120px;
+    background-image: url("../images/esri-transparent.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+#nav-icons {
+    position: absolute;
+    right: 125px;
+    top: 0px;
+    width: 400px;
+    height: 50px;
+    /*background-color: #e0e0e0*/
+}
+
+#nav-icons > div {
+    /*display: inline-block;*/
+    float: right;
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.nav-icon.hide {
+    display: none;
+}
+
+.toggle-item.hide {
+    display: none;
+}
+
+#layers-icon {
+    background-image: url("../images/icon_layers.png");
+}
+
+#search-icon {
+    background-image: url("../images/icon_search.png");
+}
+
+#toggle-menu-icon {
+    display: none;
+}
+
+#legend-icon {
+    padding: 0px 20px;
+}
+
+.billboard {
+    position: absolute;
+    top: 60px;
+    margin: 5px auto;
+    left: 0px;
+    right:0px;
+    z-index: 99;
+    color: #00619b;
+    opacity: 0.9;
+    text-align: center;
+    display: block;
+    max-width: 600px;
+    pointer-events:none;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.billboard-location-info {
+    margin-bottom: 10px;
+}
+
+.billboard-location-info > span {
+    font-size: 45px;
+}
+
+.billboard-time-info > span {
+    font-size: 24px;
+}
+
+.billboard-time-info > span.from-time-label {
+    margin-right: 15px;
+}
+
+.billboard-time-info > span.to-time-label {
+    margin-left: 15px;
+}
+
+.panel-fixed-to-top {
+    top: 75px;
+    right: 25px;
+    font-family: arial;
+    position: absolute;
+    z-index: 40;
+    width: 285;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.panel.hide {
+    display: none;
+}
+
+div.panel-item {
+    border-radius: 0px;
+}
+
+div#layers-div, div#search-div, div#info-div {
+    width: 285px;
+}
+
+.layer-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.time-info {
+    margin-bottom: 22px;
+}
+
+/* Absolute Center CSS Spinner */
+.loading {
+    position: fixed;
+    z-index: 999;
+    height: 4em;
+    width: 4em;
+    overflow: hidden;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background : url(../images/loader-ie9.gif) no-repeat center center;
+  }
+
+.info-box.semi-transparent {
+    opacity: 0.8;
+}
+
+.info-box.semi-transparent:hover {
+    opacity: 1;
+}
+
+
+.search-input-box {
+    margin-bottom: 10px;
+    height: 34;
+}
+
+#search {
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.arcgisSearch .searchBtn {
+    width: 22px !important;
+    border-radius: 0;
+    border-color: rgba(50,50,50,0.6);
+    background-color: rgba(0,0,0,0.7);
+    color: #fff;
+}
+
+.arcgisSearch .searchGroup .searchInput {
+    border-radius: 0;
+    border-color: rgba(50,50,50,0.6);
+    background-color: rgba(0,0,0,0.7);
+
+}
+
+.arcgisSearch .searchBtn:hover, .arcgisSearch .searchBtn:focus {
+    text-decoration: none;
+    background-color: rgba(0,0,0,1);
+}
+
+.query-layers {
+    overflow: hidden;
+    /*background-color: #635262;*/
+    margin-bottom: 10px;
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.category-item {
+    width: 33%;
+    float: left;
+    text-align: center;
+    color: #efefef;
+    /* background-color: #fff; */
+    background-color: rgba(0,0,0,0.2);
+    font-size: 14px;
+    padding: 8px 0px;
+    cursor: pointer;
+}
+
+.category-item.left{
+    border-right: 1px solid rgba(255, 255, 255, .3);
+}
+
+.category-item.active {
+    color: #fff;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.precip-layers {
+    clear: left;
+    top: 300px;
+    border-width: 1px 0px 0px 0px;
+    border-style: solid;     
+    border-color: #c6c6c6;    
+}
+
+.precip-layer {
+    padding: 10px 0px 10px 20px;
+    cursor: pointer;    
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;     
+    border-color: #c6c6c6;
+}
+
+.precip-layer.active {
+    color: #fff;
+    background-color: #007ac2;
+}
+
+#info-div > div {
+    padding: 0px 10px;
+}
+
+#info-div > div > p {
+    line-height: 24px;
+}
+
+#info-div a {
+    color: #efefef;
+}
+
+#chartOpenIcon.hide  {
+    display: none;
+}
+
+#legendContainer.hide {
+    display: none;
+}
+
+#legendContainer {
+    position: absolute;
+    z-index: 99;
+    /*top: 50px;*/
+    /*top: 300px;*/
+    /*bottom: 30px;*/
+    right: 0px;
+    width: 200px;
+    /*max-height: 500px;*/
+    background-color: #1970a5;
+    /*padding: 20px 10px 20px 20px;*/
+    border-radius: 0px;
+    color: #e7e7e7;  
+    overflow: auto; 
+}
+
+.legend-group-container {
+    margin: 20px 20px;
+}
+
+#legendTitle {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-bottom: 0.1px solid #c6c6c6;
+}
+
+#legendTitle small {
+    font-size: 10px;
+    line-height: 10px;
+}
+
+.legend-group {
+    /*display: block;*/
+    padding: 0;
+    /*margin: 0px 20px;*/
+}
+
+.legend-item {
+    display: inline-block;
+    margin-top: -4px;
+}
+
+.legend-item.graphic {
+
+    height: 25px;
+    width: 60px;
+    cursor: pointer;
+}
+
+.legend-item.graphic:hover {
+    width: 68px;
+}
+
+.legend-item.label {
+
+    height: 25px;
+    width: 20px;
+    color: #e7e7e7;
+    /*background: rgba(120, 120, 120, 1);*/
+}
+
+.legend-item span{
+    display: table-cell;
+    padding-top: 13px;
+    /*vertical-align:middle;*/
+    padding-left: 10px;
+    font-size: 14px;
+    line-height: 25px;
+}
+
+.place-name-main-info-template {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.place-name-sub-info-template {
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.esriPopup .contentPane {
+    background-color: #38383c;
+    color: #e0e0e0;
+}
+
+.esriPopup .actionsPane {
+    display: none;
+}
+
+.chart-legend-item {
+    margin-bottom: 15px;
+}
+
+.chart-legend-desc {
+    line-height: 10px;
+    font-size: 10px;
+    margin-left: 26px;
+    margin-right: 10px;
+    margin-top: 3px;
+    color: #eee;
+    opacity: 0.5;
+}
+
+.chart-legend-desc.active {
+    opacity: 0.8;
+}
+
+.chart-legend-link {
+    width: 150px;
+    margin-left: 20px;
+    padding: 5px 10px;
+    text-align: center;
+    color: #8e8e8e;
+    font-size: 12px;
+    border: 0.1px solid #636363;
+    cursor: pointer;
+}
+
+#toggleCumulative {
+    /* font-size: 12px; */
+    /* color: #434343; */
+    /*text-decoration: underline;*/
+    cursor: pointer;
+    /*margin-top: 8px;*/
+}
+
+#toggleCumulative > span {
+    vertical-align: middle;
+}
+
+#toggleAnimation{
+    color: #eee;
+    cursor: pointer;
+    padding: 8px 10px;
+    border: 0.5px solid #efefef;
+    text-align: center;
+    font-size: 14px;
+    margin: 0px 10px;
+    margin-top: 20px;
+    /*width: 150;*/
+}
+
+#toggleAnimation:hover {
+    background-color: #1970a5;
+}
+
+#chart-container {
+    position: absolute;
+    z-index: 99;
+    /*top: 50;
+    left: 0;*/
+    right: 335px;
+    max-width: 980px;
+    background-color: rgba(0,0,0,0.7);
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#chart-container.hide {
+    display: none;
+}
+
+/*div.chart-wrapper {
+
+}*/
+
+#chart-container div.chart-header {
+    height: 35px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+#chart-container div.chart-header > div {
+    display: inline-block;
+    line-height: 35px;
+    font-size: 20px;
+    color: #e3e3e3;
+}
+
+#chart-container .chart-table-wrapper {
+    height: 90px;
+    display: none;
+}
+
+#chart-container .chart-table-wrapper .chart-table-divider {
+    height: 1px;
+    background-color: #666666;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item {
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px 0;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item.left {
+    border-right: 1px solid #666666;
+    width: 30%;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item.right {
+    padding-left: 10px;
+    width: 65%;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item > div {
+    color: #efefef;
+    margin: 5px;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item .location-info {
+    text-align: center;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item .location-info span.layer-main-title {
+    font-size: 16px;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item .location-info span.layer-sub-title {
+    font-size: 12px;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item .time-info  {
+    text-align: center;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item .time-info .time-info-items-wrapper {
+    margin: 0 10px;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item .time-info .time-info-items-wrapper > div {
+    display: inline-block;
+    vertical-align: middle;
+    background-color: rgba(240, 240, 240, 1);
+    color: #434343;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item .time-info .time-info-items-wrapper > div.left {
+    border-top-left-radius: 5%;
+    border-bottom-left-radius: 5%;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item .time-info .time-info-items-wrapper > div.right {
+    border-top-right-radius: 5%;
+    border-bottom-right-radius: 5%;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item .time-info .time-info-item  {
+    width: 40%;
+    border-right: 0.5px solid #b7b7b7;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item .time-info .time-info-item .time-info-item-label {
+    font-size: 10px;
+    margin-bottom: 5px;
+    color: rgba(120,120,120,1);
+}
+
+#chart-container .chart-table-wrapper .chart-table-item .time-info .time-info-item .time-info-item-value {
+    font-size: 12px;
+    color: rgba(90,90,90,1);
+    font-weight: 600;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item .time-info .play-animation-btn  {
+    width: 10%;
+    min-width: 30px;
+    height: 100%;
+    text-align: center;
+    cursor: pointer;
+    background-color: rgba(50,50,50, 0.9)
+}
+
+#chart-container .chart-table-wrapper .chart-table-item .time-info .play-animation-btn span {
+    line-height: 30px;
+    font-size: 12px;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item .precip-info {
+    margin: 5px;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item .precip-info div.precip-info-title {
+    font-size: 12px;
+    font-weight: 200;
+    color: rgba(240,240,240,1);
+    margin-bottom: 3px;
+}
+
+
+#chart-container .chart-table-wrapper .chart-table-item .precip-info div.precip-info-title span.time-info {
+    display: none;
+}
+
+
+#chart-container .chart-table-wrapper .chart-table-item .precip-info div.precip-info-table-wrapper {
+    background-color: #efefef;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item .precip-info div.precip-info-table-header {
+    font-size: 10px;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item .precip-info div.precip-info-table-row {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+#chart-container .chart-table-wrapper .chart-table-item .precip-info  div.table-cell {
+    display: inline-block;
+    text-align: center;
+    padding: 3px 0;
+    color: #636363;
+    cursor: pointer;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item .precip-info  div.table-cell > span { 
+    display: block;
+}
+
+div.table-cell > span.table-cell-category-unit {
+    font-size: 10px;
+    margin-left: 2px;
+    display: inline-block !important;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item .precip-info  div.table-cell > span.table-cell-category-label {
+    font-size: 10px;
+    display: inline-block !important;
+}
+
+#chart-container .chart-table-wrapper .chart-table-item .precip-info  div.table-cell > span.pct-area-label {
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+div.chart-wrapper > div {
+    /*float: left;*/
+    margin: 3px 0;
+}
+
+div#chart-div {
+    width: 75%;
+    height: 225px;
+}
+
+div.chart-row {
+    /*background-color: #036585;*/
+    position: relative;
+}
+
+div.chart-row > div.column {
+    display: inline-block;
+    vertical-align: top;
+}
+
+/*
+* chart selection element
+*/
+div#chart-selection-wrapper {
+    /*width: 20%;*/
+    /*background-color: #852365;*/
+    text-align: center;
+}
+
+div#chart-selection-wrapper > div {
+    /*margin: 0 6px 10px;*/
+    width: 45%;
+    display: inline-block;
+    /*text-align: left;*/
+}
+
+div#chart-selection-wrapper .chart-selection-item.accumulation {
+    /*color: #b3b4ff;*/
+    color: #efefef;
+    border-right: solid 1px #666666;
+}
+
+div#chart-selection-wrapper .chart-selection-item.precipitation {
+    /*color: #80cdff;*/
+    color: #efefef;
+}
+
+div#chart-selection-wrapper .chart-selection-item > div {
+    padding: 3px 5px;
+
+    display: inline-block;
+    vertical-align: middle;
+}
+
+div#chart-selection-wrapper .chart-selection-item div.title {
+    font-size: 22px;
+}
+
+/*div#chart-selection-wrapper .chart-selection-item.accumulation div.title::after {
+    content: " ";
+    height: 1px;
+    display: block;
+    width: 100%;
+    margin-top: 3px;
+    
+    background: -webkit-gradient(linear, left top, right top, from(#b3b4ff), to(rgba(232,232,255, 0.1)));
+
+    background: -webkit-linear-gradient(left, #b3b4ff, rgba(232,232,255, 0.1));
+
+    background: -moz-linear-gradient(left, #b3b4ff, rgba(232,232,255, 0.1));
+
+    background: -ms-linear-gradient(left, #b3b4ff, rgba(232,232,255, 0.1));
+
+    background: -o-linear-gradient(left, #b3b4ff, rgba(232,232,255, 0.1));
+}*/
+
+/*div#chart-selection-wrapper .chart-selection-item.precipitation div.title::after {
+    content: " ";
+    height: 1px;
+    display: block;
+    width: 100%;
+    margin-top: 3px;
+    
+    background: -webkit-gradient(linear, left top, right top, from(#80cdff), to(rgba(216,240,255, 0.1)));
+
+    background: -webkit-linear-gradient(left, #80cdff, rgba(216,240,255, 0.1));
+
+    background: -moz-linear-gradient(left, #80cdff, rgba(216,240,255, 0.1));
+
+    background: -ms-linear-gradient(left, #80cdff, rgba(216,240,255, 0.1));
+
+    background: -o-linear-gradient(left, #80cdff, rgba(216,240,255, 0.1));
+}*/
+
+div#chart-selection-wrapper .chart-selection-item span {
+    vertical-align: middle;
+}
+
+div#chart-selection-wrapper .chart-selection-item div.title .selection-box {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+div#chart-selection-wrapper .chart-selection-item div.title .question-icon {
+    font-size: 12px;
+    margin-left: 5px;
+    display: none;
+}
+
+div#chart-selection-wrapper .chart-selection-item div.desc {
+    font-size: 12px;
+    max-width: 160px;
+    text-align: left;
+}
+
+div#chart-selection-wrapper .chart-selection-item.inactive span {
+    opacity: 0.3;
+}
+
+
+#precip-info-table-vertical {
+    width: 150px;
+    top: 5px;
+    bottom: 35px;
+    position: absolute;
+    margin-top: auto;
+    margin-bottom: auto;
+    /*background-color: #efefef;*/
+}
+
+#precip-info-table-vertical > div.precip-info-table-vertical-element {
+    /*height: 18px;*/
+    width: 100%;
+    /*margin-bottom: 1px;*/
+    background-color: #4ca1d4;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+#precip-info-table-vertical > div.precip-info-table-vertical-element > span.amount {
+    font-size: 10px;
+    width: 60px;
+    margin-left: 15px;
+}
+
+#precip-info-table-vertical > div.precip-info-table-vertical-element > span.pct-area-label {
+    font-size: 12px;
+    font-weight: 600;
+    width: 40px;
+    margin-left: 15px;
+}
+
+/*foo anchor*/
+#play-animation-button-wrapper {
+    margin-top: 80px;
+    margin-left: 15px;
+    width: 40px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#play-animation-button-wrapper > div {
+    font-size: 36px;
+    color: #eee;
+}
+
+/*
+* tablet view chart
+*/
+div#chart-tablet-view-wrapper {
+    width: 100%;
+    /*background-color: #efefef;*/
+    display: none;
+}
+
+div#chart-tablet-view-wrapper .chart-tablet-view-items-wrapper {
+    margin: 0 10px;
+    /*background-color: #9b9b9b;*/
+}
+
+div#chart-tablet-view-wrapper .chart-tablet-view-items-wrapper.hide {
+    display: none;
+}
+
+div#chart-tablet-view-wrapper .chart-tablet-view-items-wrapper .chart-tablet-view-item {
+    margin: 2px 10px;
+    height: 26px;
+    font-size: 12px;
+    color: #d7d7d7;
+    background-color: #7e7e7e;
+    position: relative;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+div#chart-tablet-view-wrapper .chart-tablet-view-items-wrapper .chart-tablet-view-item > span {
+    line-height: 26px;
+}
+
+.chart-tablet-view-item-bar {
+    /*height: 100%;*/
+    line-height: 26px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    max-width: 100%;
+    /*opacity: 0.8;*/
+}
+
+div#chart-tablet-view-wrapper .chart-tablet-view-items-wrapper .chart-tablet-view-item.active {
+    opacity: 1;
+    color: #fff;
+    background-color: #909090;
+}
+
+.chart-tablet-view-item-bar.active {
+    opacity: 1;
+}
+
+span.chart-tablet-view-item-time-info {
+    float: left;
+    margin-left: 10px;
+    position: relative;
+    z-index: 100;
+}
+
+span.chart-tablet-view-item-time-info:before {
+   font-family: FontAwesome;
+   content: "\f017";
+   margin-right: 4px;
+   color: #fff;
+}
+
+span.chart-tablet-view-item-precip-info {
+    float: right;
+    margin-right: 10px;
+    position: relative;
+    z-index: 100;
+}
+
+span.chart-tablet-view-item-precip-info:before {
+   font-family: FontAwesome;
+   content: "\f043";
+   margin-right: 5px;
+   color: #fff;
+}
+
+#legend-div {
+    display: inline-block;
+    position: absolute;
+    margin-left: -4px;
+    width: 18%;
+    height: 100%;
+    background-color: #985364;
+}
+
+#legend-items-wrapper {
+    padding-top: 30px;
+}
+
+#legend-div input {
+    float: left;
+    margin-right: 10px;
+    padding-top: 10px;
+}
+
+#legend-div label {
+    display: block;
+    font-size: 24px;
+    font-weight: 100;
+}
+
+#legend-div span {
+    line-height: 30px;
+}
+
+#legend-content.hide {
+    display: none;
+}
+
+#chartCloseIcone {
+    width: 14px;
+    height: 14px;
+    right: 5px;
+    top: 5px;
+    position: absolute;
+    border-radius: 3px;
+    padding: 0px 3px 7px 3px;
+    color: #d7d7d7;
+    z-index: 100;
+    cursor: pointer;
+}
+
+#chartCloseIcone:hover {
+    background-color: rgba(180, 180, 180, 0.6);
+}
+
+#chartOpenIcon {
+    position: absolute;
+    width: 150px;
+    height: 20px;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+
+    z-index: 99;
+    background-color: rgba(0, 97, 155, 0.8);
+    cursor: pointer;
+
+    color: #fff;
+    font-size: 14px;
+
+    border-radius: 5% 5% 0 0;
+
+    text-align: center;
+    line-height: 20px;
+}
+
+#chartOpenIcon:hover {
+    height: 25px;
+}
+
+#legend-button {
+    padding: 5px 10px;
+    text-align: center;
+    width: 100px;
+    height: 20px;
+    line-height: 20px;
+    right: 0px;
+    margin-top: -30px;
+    float: right;
+    background-color: #007ac2;
+    color: #eee;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#legend-button:hover {
+    background-color: #4ca1d4;
+}
+
+#legend-button.hide {
+    display: none;
+}
+
+.intro-content {
+    margin-bottom: 20px;
+}
+
+.intro-content ol {
+    padding-left: 20px;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.intro-content span {
+    font-size: 15px;
+}
+
+/*.layer-main-title {
+    font-size: 22px; 
+}
+
+.layer-sub-title {
+
+}*/
+
+/*dialog section*/
+
+.dialog-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 500;
+}
+
+.dialog-container.hide {
+    display: none;
+}
+
+.dialog-container > div.dialog-window {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(100,100,100,1);
+    z-index: 1000;
+}
+
+.dialog-container > div.dialog-window.welcome-message {
+    width: 500px;
+    height: 520px;
+    margin-left: -250px;
+    margin-top: -260px;
+}
+
+.dialog-container > div.dialog-window.tutorial-message {
+    width: 600px;
+    height: 700px;
+    margin-left: -300px;
+    margin-top: -350px;
+}
+
+div.dialog-window > div.dialog-title {
+    font-size: 24px;
+    text-align: center;
+    padding: 15px 15px;
+    /*border-bottom: 1px solid rgba(50,50,50,0.5);*/
+    color: #fff;
+    background-color: #007ac2;
+    /*border-bottom: 1px solid rgba(255,255,255,0.5);*/
+}
+
+div.dialog-window > div.dialog-content {
+    font-size: 14px;
+    margin: 25px;
+    line-height: 22px;
+    text-align: center;
+}
+
+div.dialog-window > div.dialog-content span.highlight {
+    color: #007ac2;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+div.dialog-window > div.dialog-content > div > p {
+    font-size: 14px;
+    line-height: 22px;
+    text-align: left;
+}
+
+div.dialog-window > div.dialog-bottons {
+    position: absolute;
+    padding: 20px 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /*width: 100%;*/
+    /*background-color: #530948;*/
+    border-top: 1px solid rgba(100,100,100,0.5);
+    text-align: center;
+}
+
+div.dialog-window > div.dialog-bottons > div {
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid rgba(100,100,100,0.5);
+    margin: 0 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+div.dialog-window > div.dialog-bottons > div:hover {
+    border: 1px solid rgba(0, 122, 194, 0.5);
+    color: #007ac2;
+}
+
+div.hide {
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    .billboard {
+        left: 65px;
+        right: unset;
+        text-align: left;
+        max-width: 500px;
+    }
+
+    .billboard-location-info {
+        margin-bottom: 5px;
+    }
+
+    .billboard-location-info > span {
+        font-size: 30px;
+    }
+
+    .billboard-time-info > span {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 992px) {
+
+    #title {
+        font-size: 18px;
+        margin-left: 5px;
+    }
+
+    div.chart-wrapper > div {
+        float: none;
+        width: 100% !important;
+    }
+
+    div#chart-selection-wrapper {
+        padding-top: 0;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    div#chart-selection-wrapper .chart-selection-item { 
+        display: inline-block;
+        vertical-align: top;
+        width: 45%;
+        margin: 0;
+    }
+
+    div#chart-selection-wrapper .chart-selection-item.accumulation div.title::after {
+        display: none;
+    }
+
+    div#chart-selection-wrapper .chart-selection-item.precipitation div.title::after {
+        display: none;
+    }
+
+    div#chart-selection-wrapper .chart-selection-item div.title .question-icon {
+        display: unset;
+    }
+
+    div#chart-selection-wrapper .chart-selection-item div.desc {
+        display: none;
+    }
+
+    #precip-info-table-vertical {
+        margin-left: -15px;
+    }
+
+    #play-animation-button-wrapper {
+        margin-left: 5px;
+    }
+
+}
+
+@media (max-width: 768px) { 
+
+    div.panel-item { 
+        padding: 15px 10px;
+    }
+    
+    .billboard {
+        display: none;
+    }
+
+    #chart-container .chart-table-wrapper {
+        height: 100%;
+        display: unset;
+    }
+
+    #chart-container .chart-table-wrapper .chart-table-item {
+        display: block;
+        width: unset !important;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    #chart-container .chart-table-wrapper .chart-table-item .location-info { 
+        margin-bottom: 10px;
+    }
+
+    #chart-container .chart-table-wrapper .chart-table-item.left {
+        border-right: none;
+    }
+
+    #chart-container .chart-table-wrapper .chart-table-item.right {
+        padding-left: 0px;
+    }
+
+    #chart-container .chart-table-wrapper .chart-table-item.left .time-info {
+        display: none;
+    }
+
+    div#chart-div {
+        display: none;
+    }
+
+    div#chart-tablet-view-wrapper {
+        display: block;
+    }
+
+    #chart-container .chart-table-wrapper .chart-table-item .precip-info div.precip-info-title span.time-info {
+        display: unset;
+    }
+
+    .info-box {
+        display: none;
+    }
+
+    .chart-row {
+        display: none;
+    }
+
+}
+
+@media (max-width: 483px) {
+
+    #title {
+        margin-left: 5px;
+    }
+
+    #esri-logo {
+        display: none;
+    }
+
+    #nav-icons {
+        right: 0px; 
+        width: 100%;
+    }
+
+    .panel { 
+        width: 85%;
+    }   
+
+    div#layers-div, div#search-div, div#info-div {
+        width: unset;
+        left: 0;
+        right: 10px;
+    }
+
+    div.panel-item { 
+        padding: 15px 10px;
+    }
+
+    div#chart-selection-wrapper .chart-selection-item div.title {
+        font-size: 16px;
+    }
+
+    .dialog-container > div.dialog-window {
+        width: unset !important;
+        height: unset !important;
+        margin-left: unset !important;
+        margin-top: unset !important;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    div.dialog-window > div.dialog-title { 
+        padding: 8px 15px;
+    }
+
+    div.dialog-window > div.dialog-bottons {
+        position: unset;
+    }
+
+    div.dialog-window > div.dialog-bottons > div {
+        width: 110px;
+        margin: 0 3px;
+    }
+
+    div.dialog-window > div.dialog-content {
+        line-height: 20px;
+    }
+
+    #toggle-menu-icon { 
+        display: unset;
+    }
+
+    div.table-cell > span.table-cell-category-unit {
+        display: none !important;
+    }
+
+}
+
+
