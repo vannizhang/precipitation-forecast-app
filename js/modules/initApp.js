@@ -68,31 +68,24 @@ define([
             timeRangeText: $('#timeRangeWrapper'),
             layerMainTitleText: $('.layer-main-title'),
             layerSubTitleText: $('.layer-sub-title'),
-            
             legendGroupContainer: $('.legend-group-container'),
             legendItemGraphic: $('.legend-graphic'),
-
             queryCategoryButton: $('.category-item'),
-            
             toggleCumulativeButton: $('#toggleCumulative'),
             toggleAnimationButton: $('.play-animation-btn'),
-            
             chartContainer: $('#chart-container'),
             chartTimeInfoFrom: $('.from-time-label'),
             chartTimeInfoTo: $('.to-time-label'),
             chartSelectionBox: $('.chart-selection-item span.selection-box'),
-
             precipInfoTitle: $('.precip-info-title > span.title'),
             precipInfoTableHeader: $('.precip-info-table-header'),
             precipInfoTableRow: $('.precip-info-table-row'),
             precipInfoTableCell: $('.table-cell'),
-
             precipInfoTableVertical: $('#precip-info-table-vertical'),
             chartTabletViewWrapper: $('.chart-tablet-view-items-wrapper')
         },
 
         constructor: function () {
-            // this._signInToArcGISPortal();
             calcite.init();
             this.map = this._addMap();
             this.config = MapConfig; 
@@ -136,23 +129,16 @@ define([
                 for(var i = 0, len = MapConfig.layers.dynamic_layers.length; i < len; i++){
                     var dLayer = new ArcGISDynamicMapServiceLayer(MapConfig.layers.dynamic_layers[i].url, MapConfig.layers.dynamic_layers[i].options);  
                     dLayer.setVisibleLayers(MapConfig.layers.dynamic_layers[i].options.visibleLayers);
-                    // map.addLayer(dLayer);  
                     on(dLayer, "load", lang.hitch(this, this._dynamicLayerOnLoadHandler)); 
                 }
             }
         }, 
         
         _mapReadyHandler: function(){
-
             this.drawTool = new drawUtils({
                 map: this.map,
                 callback: lang.hitch(this, this._drawEndHandler)
             });
-
-            // this.updateDomNodeText({
-            //     target: this.appUIs.toggleCumulativeButton, 
-            //     text: 'Toggle national precipitation view'
-            // });
         },
 
         _drawEndHandler: function(evt){
@@ -200,7 +186,6 @@ define([
                     target: this.appUIs.timeRangeText,
                     text: this.getSimplifiedDate(this.settings.precipDataByPeriod[0][0]) + ' - ' + this.getSimplifiedDate(this.settings.precipDataByPeriod[this.settings.precipDataByPeriod.length - 1][0])
                 });
-                // this.appUIs.timeRangeText.text(this.getSimplifiedDate(this.settings.precipDataByPeriod[0][0]) + ' - ' + this.getSimplifiedDate(this.settings.precipDataByPeriod[this.settings.precipDataByPeriod.length - 1][0]));  
                 this._setLayerDrawingOption(layer.layer);
                    
                 on(layer.layer, 'update-end', function(error){

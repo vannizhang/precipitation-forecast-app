@@ -99,9 +99,6 @@ define({
                 type: 'UniqueValueRenderer',
                 column: 'category',
                 style: 'solid',
-                // outlineStyle: 'STYLE_SOLID',
-                // outlineColor: '#636363',
-                // outlineWidth: 1,
                 color: [
                     [190, 223, 255, 0.8],
                     [160, 216, 242, 0.8],
@@ -130,9 +127,6 @@ define({
                 type: 'UniqueValueRenderer',
                 column: 'category',
                 style: 'solid',
-                // outlineStyle: 'STYLE_NULL',
-                // outlineColor: '#636363',
-                // outlineWidth: 0,
                 color: [
                     [190, 223, 255, 1],
                     [160, 216, 242, 1],

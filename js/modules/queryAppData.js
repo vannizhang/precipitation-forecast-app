@@ -48,13 +48,11 @@ define([
             this.app.updateDomNodeText([
                 {target: this.app.appUIs.layerMainTitleText, text: placeNameStrings[0]},
                 {target: this.app.appUIs.layerSubTitleText, text: placeNameStrings[1]},
-                // {target: this.app.appUIs.toggleCumulativeButton, text: 'Turn On Cumulative Total'}
             ]);
 
             this.app.unselectToggleCumulativeButton();
             $(".info-box").addClass('semi-transparent');
             $('.info-box-text').hide();
-            // $('#loadingSpinner').show();
         },
         
         _getQueryLayerURL: function(layers){
@@ -99,10 +97,7 @@ define([
                 graphicObj.symbol = new simpleSymbolUtils(this.app.getLayerStyle('userDefinedArea')).getSymbol();
                 graphicObj.geometry = GeometryEngine.generalize(graphicObj.geometry, 0.5, true, 'miles');
                 this.app.map.getLayer('userDefinedArea').add(graphicObj);
-
-                // console.log(graphicObj.geometry.getCentroid());
                 this.app.map.centerAt(graphicObj.geometry.getCentroid());
-                
                 this.app.settings.userDrawnLayerArea = GeometryEngine.geodesicArea(graphicObj.geometry, 'square-miles').toFixed(0);
                 this._getPrecipData(graphicObj.geometry);
             })); 
@@ -114,7 +109,6 @@ define([
                 return d.url;
             });
             
-            // console.log(qLayers);
             new queryTasksUtils({params: {geometry: geom}, queryTasks: qLayers}).batchQueryTasks(lang.hitch(this, function(results){
                 if(!results[0].features.length){
                     alert('the area you selected will not rain in next 72 hours');
@@ -187,7 +181,7 @@ define([
             precipDataByPeriodClone.forEach(lang.hitch(this, function(obj, idx){  
                 
                 var layers = ['amountByTime', 'accumulationByTime'];
-                var userDrawnLayerArea = this.app.settings.userDrawnLayerArea;  
+                var userDrawnLayerArea = +this.app.settings.userDrawnLayerArea;  
                 var app = this.app;   
                 
                 var calcPrecipAmountByArea = function (layerName){
