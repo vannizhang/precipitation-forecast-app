@@ -18,14 +18,8 @@
 }
 
 .pane-section {
-    /*margin-top: 10px;
-    margin-bottom: 10px;*/
-    
     float: left;
     z-index: 999;
-    /*margin-left: 0px;*/
-    /*margin-bottom: 10px;*/
-    /*background-color: white;*/
     border-radius: 8px;
     padding-left: 20px;
     padding-right: 20px;
@@ -39,13 +33,11 @@
 }
 
 .control-command-interior {
-    /*background-image: url(../js/images/list.png);*/
     background-size: contain;
     background-size: 60%;
     background-position: center;
     width: 24px;
     height: 24px;
-    /* background-position: 50% 50%; */
     background-repeat: no-repeat;
     display: block;
     padding: 3px;

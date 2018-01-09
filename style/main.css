@@ -22,7 +22,6 @@ html, body {
     top: 0px;
     left: 0px;
     right: 0px;
-    /* background-color: #007ac2; */
     background-color: rgba(0,0,0,0.8);
 }
 
@@ -41,10 +40,8 @@ html, body {
 
 #esri-logo {
     position: absolute;
-    /*float: right;*/
     right: 0px;
     top: 0px;
-    /*right: 0px;*/
     height: 50px;
     width: 120px;
     background-image: url("../images/esri-transparent.png");
